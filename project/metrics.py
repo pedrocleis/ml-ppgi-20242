@@ -13,7 +13,7 @@ def confusion_matrix(y_true, y_pred):
     cm = np.zeros((n_classes, n_classes), dtype=int)
     
     for i, true_label in enumerate(labels):
-        for j, pred_label in range(labels):
+        for j, pred_label in enumerate(labels):
             cm[i, j] = np.sum(np.logical_and(y_pred == pred_label, y_true == true_label))
     
     return cm
@@ -28,8 +28,8 @@ def confusion_matrix_plot(y_test, y_pred, ax=None):
     if ax is None:
         fig, ax = plt.subplots(figsize=(8,6))
 
-    sns.heatmap(cm, annot=True, linewidths=0.5, square=True, cmap='mako', xticklabels=labels, yticklabels=labels, ax=ax, cbar=True)
-    ax.set_tile(f'Accuracy Score: {np.sum(np.diag(cm)) / np.sum(cm):.2f}', size=15)
+    sns.heatmap(cm, annot=True, linewidths=0.5, square=True, cmap='crest', xticklabels=labels, yticklabels=labels, ax=ax, cbar=True)
+    ax.set_title(f'Accuracy Score: {np.sum(np.diag(cm)) / np.sum(cm):.2f}', size=15)
     ax.set_ylabel('True label', size=12)
     ax.set_xlabel('Predicted label', size=12)
     
